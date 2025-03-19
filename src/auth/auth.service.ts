@@ -15,7 +15,7 @@ export class AuthService {
         if (!user) {
             return null
         }
-        const matchPwd = await bcrypt.compare(user.password, loginAuthDto.password)
+        const matchPwd = await bcrypt.compare(loginAuthDto.password, user.password)
         if (!matchPwd) {
             return null
         }
