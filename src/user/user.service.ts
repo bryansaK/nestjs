@@ -21,21 +21,19 @@ export class UserService {
     user.email = createUserDto.email;
     user.password = hash;
     user.username = createUserDto.username;
-    this.userRepository.save(user)
+    await this.userRepository.save(user)
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.userRepository.find();
   }
 
-  findOne(id: number) {
-
-    return `This action returns a #${id} user`;
+  async findOne(idUser: number) {
+    return this.userRepository.findOneBy({id: idUser});
   }
 
   async findOneByEmail(emailRequested: string) {
     const user = await this.userRepository.findOneBy({email: emailRequested})
-    console.log(user)
     return user
   }
 

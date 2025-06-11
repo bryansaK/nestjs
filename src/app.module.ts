@@ -15,9 +15,11 @@ import { NotesModule } from './notes/notes.module';
       username: 'postgres', // mettre dans un .env
       password: 'postgres', // mettre dans un .env
       database: 'postgres', // mettre dans un .env
-      entities: [],
+      entities: ["dist/**/*.entity{.ts,.js}"],
+      migrations: ["dist/migrations/*{.ts,.js}"],
       synchronize: true,
       autoLoadEntities: true,
+       migrationsTableName: 'migrations',
     }),
     UserModule,
     AuthModule,
@@ -26,4 +28,4 @@ import { NotesModule } from './notes/notes.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
